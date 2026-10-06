@@ -149,13 +149,15 @@
                 </div>
 
                 <div class="mb-2">
-                    <label class="form-label">Password</label>
-                    <div class="input-group">
-                        <span class="input-group-text text-muted"><i class="fa-solid fa-lock"></i></span>
-                        <input type="password" name="password" class="form-control" placeholder="••••••••••••" required>
-                    </div>
-                </div>
-
+    <label class="form-label">Password</label>
+    <div class="input-group">
+        <span class="input-group-text text-muted"><i class="fa-solid fa-lock"></i></span>
+        <input type="password" name="password" id="passwordInput" class="form-control" placeholder="••••••••••••" required>
+        <span class="input-group-text text-muted" id="togglePasswordBtn" style="cursor: pointer;">
+            <i class="fa-regular fa-eye" id="togglePasswordIcon"></i>
+        </span>
+    </div>
+</div>
                 <div class="mb-3 clearfix">
                    <a href="{{ url_for('auth.forgot_password') }}" class="forgot-link">Forgot Password?</a>
                 </div>
@@ -183,4 +185,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.getElementById('togglePasswordBtn');
+        const passwordInput = document.getElementById('passwordInput');
+        const icon = document.getElementById('togglePasswordIcon');
+
+        if (toggleBtn && passwordInput && icon) {
+            toggleBtn.addEventListener('click', function() {
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}
