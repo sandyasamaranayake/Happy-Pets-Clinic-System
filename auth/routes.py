@@ -58,3 +58,11 @@ def logout():
     logout_user()
     flash('You have been logged out.', 'info')
     return redirect(url_for('auth.login'))
+
+
+
+
+
+@auth_bp.route('/forgot-password')
+def forgot_password():
+    return render_template('auth/forgot_password.html')
