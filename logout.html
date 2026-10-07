@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logged Out | Happy Pets Clinic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f9fd;
+      --card: #ffffff;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --icon-bg: #e8effc;
+      --text: #1e293b;
+      --muted: #64748b;
+      --paw: #dbe5f3;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Decorative paw prints */
+    .paw { position: absolute; width: 70px; height: 70px; color: var(--paw); pointer-events: none; }
+    .paw.p1 { top: 22%; left: 6%;  transform: rotate(-20deg); }
+    .paw.p2 { top: 10%; right: 6%; transform: rotate(15deg); width: 80px; height: 80px; }
+    .paw.p3 { bottom: 22%; left: 12%; transform: rotate(10deg); }
+    .paw.p4 { bottom: 18%; right: 12%; transform: rotate(-15deg); }
+
+    header {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      z-index: 1;
+    }
+    .logo {
+      width: 34px; height: 34px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      display: grid; place-items: center;
+    }
+    .logo svg { width: 20px; height: 20px; }
+
+    main {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      padding: 24px 16px;
+      z-index: 1;
+    }
+    .card {
+      background: var(--card);
+      width: 100%;
+      max-width: 400px;
+      padding: 40px 32px 28px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(30, 64, 120, 0.08);
+      text-align: center;
+    }
+    .icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: var(--icon-bg);
+      color: var(--primary);
+      display: grid; place-items: center;
+    }
+    .icon svg { width: 26px; height: 26px; }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .card p.msg { font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0 auto 28px; max-width: 300px; }
+
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 999px;
+      font-size: 15px; font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    .btn:focus-visible, .help a:focus-visible { outline: 3px solid #93b4f5; outline-offset: 2px; }
+    .btn svg { width: 18px; height: 18px; }
+
+    .help { margin-top: 22px; font-size: 13px; color: var(--muted); }
+    .help a { color: var(--text); font-weight: 600; text-decoration: underline; }
+
+    footer {
+      padding: 0 16px 28px;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+      z-index: 1;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 32px 20px 24px; }
+      .paw { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Paw print shape -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="paw" viewBox="0 0 64 64">
+      <g fill="currentColor">
+        <ellipse cx="32" cy="42" rx="14" ry="12"/>
+        <ellipse cx="13" cy="28" rx="6" ry="8"/>
+        <ellipse cx="26" cy="15" rx="6" ry="8"/>
+        <ellipse cx="40" cy="15" rx="6" ry="8"/>
+        <ellipse cx="53" cy="28" rx="6" ry="8"/>
+      </g>
+    </symbol>
+  </svg>
+  <svg class="paw p1" aria-hidden="true"><use href="#paw"/></svg>
+  <svg class="paw p2" aria-hidden="true"><use href="#paw"/></svg>
+  <svg class="paw p3" aria-hidden="true"><use href="#paw"/></svg>
+  <svg class="paw p4" aria-hidden="true"><use href="#paw"/></svg>
+
+  <header>
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-3 0-5-2-5-4 0-2 2-4 5-4s5 2 5 4c0 2-2 4-5 4z"/><circle cx="5.5" cy="11" r="1.6"/><circle cx="9.5" cy="6.5" r="1.6"/><circle cx="14.5" cy="6.5" r="1.6"/><circle cx="18.5" cy="11" r="1.6"/></svg>
+    </div>
+    <span>Happy Pets Clinic</span>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </div>
+      <h1>You Have Been Logged Out</h1>
+      <p class="msg">Thank you for using Happy Pets Clinic Management System. Have a great day!</p>
+
+      <a class="btn" href="login.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Log In Again
+      </a>
+
+      <p class="help">Need help? <a href="mailto:admin@happypetsclinic.com">Contact Admin</a></p>
+    </section>
+  </main>
+
+  <footer>System Version 2.4.0 &nbsp;•&nbsp; Secure Session Closed</footer>
+
+</body>
+</html>
