@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Happy Pets Clinic{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <!-- Welcome Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold">Welcome back, {{ current_user.username }}!</h2>
+            <p class="text-muted">Happy Pets Clinic Management Dashboard</p>
+        </div>
+    </div>
+
+    <!-- Navigation Hub / Cards -->
+    <div class="row g-4">
+        
+     
+        {% if current_user.role != 'Pet Owner' %}
+            <!-- 1. Register New Pet -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-primary mb-3">
+                                <i class="fa-solid fa-paw fa-2x"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Register New Pet</h5>
+                            <p class="card-text text-muted">Register a new patient and owner profile into the clinic system.</p>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-3">Go to Registration</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Vaccine & Meal Planner -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-success mb-3">
+                                <i class="fa-solid fa-syringe fa-2x"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Vaccine & Meal Planner</h5>
+                            <p class="card-text text-muted">Manage vaccination schedules and recommended meal plans.</p>
+                        </div>
+                        <a href="#" class="btn btn-success mt-3">View Planners</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Pet List -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-info mb-3">
+                                <i class="fa-solid fa-list-check fa-2x"></i>
+                            </div>
+                            <h5 class="card-title fw-bold">Pet List</h5>
+                            <p class="card-text text-muted">Browse and search all registered pets in the clinic database.</p>
+                        </div>
+                        <a href="#" class="btn btn-info text-white mt-3">View Pet List</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+       
+
+        <!-- 4. Health Records -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="text-warning mb-3">
+                            <i class="fa-solid fa-notes-medical fa-2x"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Health Records</h5>
+                        <p class="card-text text-muted">View medical histories, diagnosis notes, and attachments.</p>
+                    </div>
+                    <a href="#" class="btn btn-warning text-white mt-3">View Records</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Settings -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="text-secondary mb-3">
+                            <i class="fa-solid fa-gear fa-2x"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Settings</h5>
+                        <p class="card-text text-muted">Manage account profile details and system preferences.</p>
+                    </div>
+                    <a href="#" class="btn btn-secondary mt-3">Account Settings</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

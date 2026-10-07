@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .register-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0f4f9;
+        padding: 20px;
+    }
+    .register-card {
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        overflow: hidden;
+        max-width: 950px;
+        width: 100%;
+        display: flex;
+    }
+    .left-panel {
+        background: #eef5ff;
+        padding: 40px;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .right-panel {
+        padding: 40px;
+        width: 60%;
+    }
+    .pet-illustration img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+    .brand-title { color: #2b3674; font-weight: 700; font-size: 22px; }
+    .brand-subtitle { color: #2563eb; font-size: 11px; letter-spacing: 1.5px; font-weight: 700; }
+    .welcome-text { font-weight: 700; font-size: 24px; color: #2b3674; }
+    .form-label { font-size: 12px; font-weight: 600; color: #2b3674; margin-bottom: 4px; }
+    .form-control, .form-select { background-color: #f8fafc; font-size: 13px; padding: 8px 12px; }
+    .btn-signup { background-color: #2563eb; border: none; padding: 10px; font-weight: 600; font-size: 14px; }
+</style>
+
+<div class="register-container">
+    <div class="register-card">
+        <!-- Left Side Illustration -->
+        <div class="left-panel">
+            <div class="pet-illustration">
+                <img src="{{ url_for('static', filename='images/happy_pets.png') }}" alt="Happy Pets">
+            </div>
+            <h4 class="fw-bold text-primary mb-2">Join Happy Pets</h4>
+            <p class="text-muted small">Create your account to manage clinic appointments and health records seamlessly.</p>
+        </div>
+
+        <!-- Right Side Form -->
+        <div class="right-panel">
+            <div class="d-flex align-items-center mb-1">
+                <i class="fa-solid fa-paw text-primary fa-lg me-2"></i>
+                <span class="brand-title">Happy Pets Clinic</span>
+            </div>
+            <div class="brand-subtitle mb-3">MANAGEMENT SYSTEM</div>
+
+            <h3 class="welcome-text mb-1">Create Account</h3>
+            <p class="text-muted small mb-3">Please fill in your details to register</p>
+
+            <form action="{{ url_for('auth.register') }}" method="POST">
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <label class="form-label">Enter your Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label class="form-label">Add Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="johndoe" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-2">
+                        <label class="form-label">Enter Contact Number</label>
+                        <input type="text" name="phone" class="form-control" placeholder="0771234567" required>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label class="form-label">Select Role (Login as)</label>
+                        <select name="role" class="form-select" required>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Pet Owner">Pet Owner</option>
+                            <option value="Staff">Staff</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Enter Address</label>
+                    <input type="text" name="address" class="form-control" placeholder="No 123, Main Street, Colombo" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Add Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="••••••••••••" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-signup w-100 mb-3">
+                    Register Account <i class="fa-solid fa-user-plus ms-2"></i>
+                </button>
+
+                <div class="text-center">
+                    <small class="text-muted">Already have an account? <a href="{{ url_for('auth.login') }}" class="text-primary text-decoration-none fw-semibold">Sign in here</a></small>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
