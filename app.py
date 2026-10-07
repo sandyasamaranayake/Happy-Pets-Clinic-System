@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 from flask_login import LoginManager, login_required
 from models import db, User
 from auth.routes import auth_bp
+from ai_assistant import ai_bp  # Dilshan - AI Care Assistant (HP-9, HP-10)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'happy_pets_secret_key_123'
@@ -20,6 +21,9 @@ def load_user(user_id):
 
 # Register Authentication Blueprint
 app.register_blueprint(auth_bp)
+
+# Register AI Care Assistant Blueprint
+app.register_blueprint(ai_bp)
 
 @app.route('/')
 def index():
@@ -73,4 +77,4 @@ with app.app_context():
         )
         db.session.add(owner)
         
-    db.session.commit()
+    db.session.commit()
