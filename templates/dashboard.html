@@ -117,6 +117,22 @@
             </div>
         </div>
 
+        <!-- 6. Logout -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="text-danger mb-3">
+                            <i class="fa-solid fa-right-from-bracket fa-2x"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Logout</h5>
+                        <p class="card-text text-muted">Safely end your session and sign out of the system.</p>
+                    </div>
+                    <a href="{{ url_for('auth.logout') }}" class="btn btn-danger mt-3">Logout</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 {% endblock %}
